@@ -58,6 +58,15 @@ ShellScan returns non-zero exit codes on findings, so it works as a gate in any 
 | `SHELLSCAN_API_KEY` | API key (required) | — |
 | `SHELLSCAN_API_URL` | API base URL | `https://api.shellscan.dev` |
 
+## Roadmap
+
+- **Deep scan** — behavioral analysis, dataflow tracing, supply chain integrity checks
+- **Assess** — AI-powered semantic reasoning, OWASP Agentic Top 10 mapping, risk scoring
+- **Fix** — automated remediation guidance with concrete code suggestions
+- **Python client library** — programmatic access beyond the CLI
+- **MCP server scanning** — configuration and permissions analysis
+- **Moltlaunch integration** — automatic scanning of skills published to the marketplace
+
 ## Test Fixtures
 
 The `tests/skills/` directory contains reference skills for testing scanner coverage:
