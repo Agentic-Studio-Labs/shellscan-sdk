@@ -18,9 +18,6 @@ export SHELLSCAN_API_KEY="sk_live_..."
 # Scan a skill
 shellscan SKILL.md handler.py
 
-# Deeper analysis
-shellscan --depth deep SKILL.md handler.py
-
 # JSON output for CI pipelines
 shellscan --json SKILL.md handler.py
 ```
@@ -33,14 +30,14 @@ shellscan --json SKILL.md handler.py
 | 1 | FAIL | Critical or high severity findings |
 | 2 | REVIEW | Medium severity findings worth reviewing |
 
-## Scan Depths
+## What It Checks
 
-| Depth | What it does |
-|-------|-------------|
-| `scan` | Fast static analysis — pattern matching, secret detection, obfuscation checks |
-| `deep` | Behavioral analysis, dataflow tracing, supply chain integrity |
-| `assess` | AI-powered semantic reasoning, OWASP mapping, risk scoring |
-| `full` | All of the above plus automated remediation guidance |
+ShellScan runs four scanners in parallel:
+
+- **Prompt injection** — instruction overrides, jailbreak patterns, role reassignment
+- **Code injection** — eval/exec, subprocess calls, reverse shells, command injection
+- **Secret detection** — API keys, tokens, credentials (AWS, Stripe, Slack, GitHub, etc.)
+- **Obfuscation** — base64 payloads, hex/unicode escapes, chr() concatenation, string assembly
 
 ## CI/CD Integration
 
