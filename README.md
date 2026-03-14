@@ -58,11 +58,35 @@ ShellScan returns non-zero exit codes on findings, so it works as a gate in any 
 | `SHELLSCAN_API_KEY` | API key (required) | — |
 | `SHELLSCAN_API_URL` | API base URL | `https://api.shellscan.dev` |
 
+## REST API
+
+The CLI wraps the ShellScan REST API. You can also use the API directly:
+
+```bash
+# Submit a scan
+curl -X POST https://api.shellscan.dev/v1/scan \
+  -H "Authorization: Bearer $SHELLSCAN_API_KEY" \
+  -F "files=@SKILL.md"
+
+# Check status / get report
+curl https://api.shellscan.dev/v1/scan/{run_id} \
+  -H "Authorization: Bearer $SHELLSCAN_API_KEY"
+
+# Org profile and scan history
+curl https://api.shellscan.dev/v1/org \
+  -H "Authorization: Bearer $SHELLSCAN_API_KEY"
+
+# Manage API keys (list, create, revoke)
+curl https://api.shellscan.dev/v1/org/keys \
+  -H "Authorization: Bearer $SHELLSCAN_API_KEY"
+```
+
 ## Roadmap
 
 - **Deep scan** — behavioral analysis, dataflow tracing, supply chain integrity checks
 - **Assess** — AI-powered semantic reasoning, OWASP Agentic Top 10 mapping, risk scoring
 - **Fix** — automated remediation guidance with concrete code suggestions
+- **Per-key permissions** — scoped API keys with custom rate limits and depth restrictions
 - **Python client library** — programmatic access beyond the CLI
 - **MCP server scanning** — configuration and permissions analysis
 - **Moltlaunch integration** — automatic scanning of skills published to the marketplace
